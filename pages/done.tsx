@@ -4,11 +4,13 @@ import Layout from "@/components/Layout/Layout";
 import MainContainer from "@/components/Navigation/MainContainer";
 import TaskList from "@/components/TaskList/TaskList";
 import useSWR from "swr";
-import { Spinner } from "@chakra-ui/react";
+import { Box, Heading, Spinner } from "@chakra-ui/react";
 import { useTaskStore } from "@/store";
 
-const DonePage = () => {
-  const setActiveList = useTaskStore((state) => state.setActiveList);
+function DonePage(): JSX.Element {
+  const setActiveList = useTaskStore(
+    (state: React.ComponentState) => state.setActiveList
+  );
   setActiveList("TaskTango - Done");
 
   const {
@@ -20,7 +22,7 @@ const DonePage = () => {
   );
 
   if (!doneTasks) {
-    return;
+    return <></>;
   }
 
   if (isLoading) {
@@ -54,6 +56,6 @@ const DonePage = () => {
       </MainContainer>
     </Layout>
   );
-};
+}
 
 export default DonePage;

@@ -1,7 +1,10 @@
 import dbConnect from "@/db/connect";
 import Task from "@/db/models/Task";
 
-export default async function handler(request, response) {
+export default async function handler(
+  request: any,
+  response: any
+): Promise<any> {
   await dbConnect();
 
   if (request.method === "GET") {
@@ -15,7 +18,7 @@ export default async function handler(request, response) {
       const task = new Task(taskTitle);
       const record = await task.save();
       return response.status(201).json(record);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       return response.status(400).json({ error: error.message });
     }

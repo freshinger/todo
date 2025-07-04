@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { useTaskStore } from "@/store";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export default function Search(): React.JSX.Element {
   const setSearchTerm = useTaskStore(
@@ -24,10 +24,10 @@ export default function Search(): React.JSX.Element {
     }
   }
 
-  const handleResetSearch = () => {
+  function handleResetSearch(): void {
     setInputValue("");
     setSearchTerm("");
-  };
+  }
 
   return (
     <form className="fullwidth">

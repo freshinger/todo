@@ -8,7 +8,9 @@ import { useTaskStore } from "@/store";
 import AddTaskInput from "@/components/Task/AddTaskInput";
 
 const UpcomingPage = () => {
-  const setActiveList = useTaskStore((state) => state.setActiveList);
+  const setActiveList: any = useTaskStore(
+    (state: React.ComponentState) => state.setActiveList
+  );
   setActiveList("TaskTango - Upcoming");
 
   const {
@@ -39,7 +41,7 @@ const UpcomingPage = () => {
   return (
     <Layout title="TaskTango - Upcoming">
       <MainContainer mainTitle="Upcoming">
-        <AddTaskInput />
+        <AddTaskInput afterSubmit={() => {}} />
         <TaskList tasks={upcomingTasks} />
       </MainContainer>
     </Layout>

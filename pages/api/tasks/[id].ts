@@ -1,7 +1,10 @@
 import Task from "@/db/models/Task";
 import dbConnect from "@/db/connect";
 
-export default async function handler(request, response) {
+export default async function handler(
+  request: any,
+  response: any
+): Promise<any> {
   const { id } = request.query;
 
   if (!id) {

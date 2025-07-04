@@ -5,7 +5,7 @@ import { Box, Button, Link } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import errorImage from "../lib/images/svg/404-Teal.svg";
 
-const NotFoundPage = () => {
+function NotFoundPage(): JSX.Element {
   return (
     <>
       <Head>
@@ -37,6 +37,6 @@ const NotFoundPage = () => {
       </Box>
     </>
   );
-};
+}
 
 export default NotFoundPage;

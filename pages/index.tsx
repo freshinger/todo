@@ -1,7 +1,8 @@
 "use client";
 import MainContainer from "@/components/Navigation/MainContainer";
 import { Spinner, Box, Heading } from "@chakra-ui/react";
-import { React, useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 import Layout from "@/components/Layout/Layout";
 import TaskList from "@/components/TaskList/TaskList";
 import useSWR from "swr";
@@ -9,11 +10,15 @@ import { useTaskStore } from "@/store";
 import AddTaskInput from "@/components/Task/AddTaskInput";
 import SetupModal from "@/components/Modal/Modal";
 
-const IndexPage = () => {
+function IndexPage(): JSX.Element {
   const { data: tasks, isLoading, error } = useSWR("/api/tasks");
 
-  const setActiveList = useTaskStore((state) => state.setActiveList);
-  const setCountingTasks = useTaskStore((state) => state.setCountingTasks);
+  const setActiveList = useTaskStore(
+    (state: React.ComponentState) => state.setActiveList
+  );
+  const setCountingTasks = useTaskStore(
+    (state: React.ComponentState) => state.setCountingTasks
+  );
 
   useEffect(() => {
     setActiveList("TaskTango - Home Page");
@@ -21,7 +26,7 @@ const IndexPage = () => {
   });
 
   if (!tasks) {
-    return;
+    return <></>;
   }
 
   if (isLoading) {
@@ -52,11 +57,11 @@ const IndexPage = () => {
     <Layout title="TaskTango - Home Page">
       <MainContainer mainTitle="All Tasks">
         <SetupModal />
-        <AddTaskInput />
+        <AddTaskInput afterSubmit={() => {}} />
         <TaskList tasks={tasks} />
       </MainContainer>
     </Layout>
   );
-};
+}
 
 export default IndexPage;

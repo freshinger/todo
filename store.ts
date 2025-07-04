@@ -8,30 +8,36 @@ export const useTaskStore = create(
       setupMode: true,
       finishSetup: () => set({ setupMode: false }),
       activeList: null,
-      setActiveList: (newActiveList) => set({ activeList: newActiveList }),
+      setActiveList: (newActiveList: any) => set({ activeList: newActiveList }),
       searchTerm: "",
-      setSearchTerm: (newSearchTerm) => set({ searchTerm: newSearchTerm }),
+      setSearchTerm: (newSearchTerm: any) => set({ searchTerm: newSearchTerm }),
       toggleFunMode: () =>
-        set((state) => ({
+        set((state: React.ComponentState) => ({
           funMode: !state.funMode,
         })),
       countingTasks: [],
-      setCountingTasks: (newCountingTasks) => set({ countingTasks: newCountingTasks }),
+      setCountingTasks: (newCountingTasks: any) =>
+        set({ countingTasks: newCountingTasks }),
       countCompletedTasks: 0,
       countActiveTasks: 0,
 
-      setCountCompletedTasks: () => {
-        const count = countingTasks.reduce((count, task) => (task.completed ? count + 1 : count), 0);
+      setCountCompletedTasks: (countingTasks: any) => {
+        const count = countingTasks.reduce(
+          (count: number, task: Task) => (task.completed ? count + 1 : count),
+          0
+        );
         set({ countCompletedTasks: count });
       },
 
-      setActiveTasks: () => {
-        const countCompleted = countingTasks.reduce((count, task) => (task.completed ? count + 1 : count), 0);
+      setActiveTasks: (countingTasks: any) => {
+        const countCompleted = countingTasks.reduce(
+          (count: number, task: Task) => (task.completed ? count + 1 : count),
+          0
+        );
         const active = countingTasks.length - countCompleted;
         set({ countActiveTasks: active });
       },
     }),
-
 
     {
       name: "task-tango-storage",

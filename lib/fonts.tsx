@@ -1,6 +1,7 @@
+import { NextFontWithVariable } from "next/dist/compiled/@next/font";
 import { Rubik } from "next/font/google";
 
-const rubik = Rubik({
+const rubik: NextFontWithVariable = Rubik({
   subsets: ["latin"],
   variable: "--font-rubik",
 });

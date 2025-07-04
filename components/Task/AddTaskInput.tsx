@@ -23,7 +23,7 @@ export default function AddTaskInput({
     try {
       await AddTask(taskTitle);
       mutate("/api/tasks");
-      let inputElement: HTMLInputElement = new HTMLInputElement();
+      let inputElement: HTMLInputElement | undefined;
       if (event.target && event.target instanceof HTMLFormElement) {
         if (
           event.target.elements.namedItem("title") !== null &&
@@ -34,7 +34,7 @@ export default function AddTaskInput({
           ) as HTMLInputElement;
         }
       }
-      inputElement && inputElement.focus();
+      if (inputElement) inputElement.focus();
 
       if (event.target && event.target instanceof HTMLFormElement) {
         event.target.reset();
