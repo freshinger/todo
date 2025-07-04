@@ -1,0 +1,3 @@
+type titleForm = {
+  title: string;
+};
