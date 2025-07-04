@@ -25,11 +25,9 @@ import { FullConfiguration } from "swr/_internal";
 
 export default function TaskList({ tasks }: Tasks): React.JSX.Element {
   const toast: CreateToastFnReturn = useToast();
-  const { mutate }: FullConfiguration = useSWRConfig();
-  const funMode: any = useTaskStore(
-    (state: React.ComponentState) => state.funMode
-  );
-  const confetti: JSConfetti = new JSConfetti();
+  const { mutate } = useSWRConfig();
+  const funMode: any = useTaskStore((state: any) => state.funMode);
+  const confetti: any = new JSConfetti();
   const searchTerm: any = useTaskStore(
     (state: React.ComponentState) => state.searchTerm
   );
