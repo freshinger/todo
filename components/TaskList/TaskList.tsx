@@ -21,12 +21,14 @@ import { useSWRConfig } from "swr";
 import { useTaskStore } from "@/store";
 import JSConfetti from "js-confetti";
 
-export default function TaskList({ tasks }) {
+export default function TaskList({ tasks }: Tasks): React.JSX.Element {
   const toast = useToast();
   const { mutate } = useSWRConfig();
-  const funMode = useTaskStore((state) => state.funMode);
+  const funMode = useTaskStore((state: React.ComponentState) => state.funMode);
   const confetti = new JSConfetti();
-  const searchTerm = useTaskStore((state) => state.searchTerm);
+  const searchTerm = useTaskStore(
+    (state: React.ComponentState) => state.searchTerm
+  );
 
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -122,7 +124,6 @@ export default function TaskList({ tasks }) {
               ></Checkbox>
 
               <Editable
-                
                 defaultValue={task.title}
                 onSubmit={(nextValue) => handleEditTask(task._id, nextValue)}
               >

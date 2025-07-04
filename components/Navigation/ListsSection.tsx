@@ -16,12 +16,16 @@ import {
 } from "@chakra-ui/react";
 import { useTaskStore } from "@/store";
 
-export default function ListsSection() {
-  const activeList = useTaskStore((state) => state.activeList);
-  let countingTasks = useTaskStore((state) => state.countingTasks);
+export default function ListsSection(): JSX.Element {
+  const activeList = useTaskStore(
+    (state: React.ComponentState) => state.activeList
+  );
+  let countingTasks = useTaskStore(
+    (state: React.ComponentState) => state.countingTasks
+  );
 
   const numberOfDoneTasks = countingTasks.filter(
-    (task) => task.completed
+    (task: Task) => task.completed
   ).length;
   const numberOfUpcomingTasks = countingTasks.length - numberOfDoneTasks;
 
@@ -30,8 +34,7 @@ export default function ListsSection() {
       <Heading display={["none", "unset"]} paddingTop="3" size="sm" mb={3}>
         Lists
       </Heading>
-      <Box fontSize="sm" width={["250px", "100%"]}
-      alignSelf="center">
+      <Box fontSize="sm" width={["250px", "100%"]} alignSelf="center">
         <nav>
           <List
             width={["100%", "inherit"]}

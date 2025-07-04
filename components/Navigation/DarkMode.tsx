@@ -1,7 +1,13 @@
-import { FormControl, FormLabel, Switch, useColorMode } from "@chakra-ui/react";
+import {
+  ColorModeContextType,
+  FormControl,
+  FormLabel,
+  Switch,
+  useColorMode,
+} from "@chakra-ui/react";
 
-export default function DarkMode() {
-  const { toggleColorMode } = useColorMode();
+export default function DarkMode(): JSX.Element {
+  const { toggleColorMode }: ColorModeContextType = useColorMode();
 
   return (
     <FormControl

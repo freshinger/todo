@@ -1,7 +1,10 @@
 import React from "react";
 import { Container, Heading, Box, Badge } from "@chakra-ui/react";
 
-export default function MainContainer({ mainTitle, children }) {
+export default function MainContainer({
+  mainTitle,
+  children,
+}: MainContainerType): React.JSX.Element {
   return (
     <Box
       p="6"
@@ -11,17 +14,10 @@ export default function MainContainer({ mainTitle, children }) {
       borderColor="gray.300"
       borderRadius={["0", "50px"]}
       overflowY="auto"
-      pt={["10","auto"]}
+      pt={["10", "auto"]}
     >
       <Container>
-        <Heading
-         
-          pb={8}
-          as="h3"
-          size="3xl"
-          
-          
-        >
+        <Heading pb={8} as="h3" size="3xl">
           {mainTitle}
         </Heading>
         {children}

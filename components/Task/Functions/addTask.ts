@@ -1,4 +1,4 @@
-export default async function AddTask(taskTitle) {
+export default async function AddTask(taskTitle: titleForm): Promise<void> {
   console.log(taskTitle);
   try {
     const response = await fetch(`/api/tasks`, {

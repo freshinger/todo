@@ -15,9 +15,13 @@ import {
 import { useTaskStore } from "@/store";
 import AddTaskInput from "../Task/AddTaskInput";
 
-const SetupModal = () => {
-  const setupMode = useTaskStore((state) => state.setupMode);
-  const finishSetup = useTaskStore((state) => state.finishSetup);
+function SetupModal(): JSX.Element {
+  const setupMode = useTaskStore(
+    (state: React.ComponentState) => state.setupMode
+  );
+  const finishSetup = useTaskStore(
+    (state: React.ComponentState) => state.finishSetup
+  );
 
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: setupMode });
   const closeWelcomeScreenAndFinishSetup = () => {
@@ -60,6 +64,6 @@ const SetupModal = () => {
       </ModalContent>
     </Modal>
   );
-};
+}
 
 export default SetupModal;

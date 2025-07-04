@@ -5,7 +5,7 @@ import MenuContainer from "../Navigation/MenuContainer";
 import { ColorModeScript, Box, Wrap, HStack } from "@chakra-ui/react";
 import { theme } from "../../theme";
 
-const Layout = ({ children, title }) => {
+function Layout({ children, title }: LayoutType): React.JSX.Element {
   return (
     <SWRConfig>
       <Head>
@@ -27,6 +27,6 @@ const Layout = ({ children, title }) => {
       </Box>
     </SWRConfig>
   );
-};
+}
 
 export default Layout;

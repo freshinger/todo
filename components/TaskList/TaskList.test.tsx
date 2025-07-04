@@ -2,7 +2,7 @@ import TaskList from "./TaskList";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-const tasks = [
+const tasks: Task[] = [
   { _id: 1, title: "Task 1", completed: false },
   { _id: 2, title: "Task 2", completed: false },
   { _id: 3, title: "Task 3", completed: false },
@@ -18,7 +18,6 @@ describe("view a list of tasks", () => {
 
     const listItems = screen.getAllByRole("listitem");
     expect(listItems.length).toBe(3);
-
   });
 
   it("handles completed task correctly", async () => {
