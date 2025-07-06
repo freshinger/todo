@@ -19,16 +19,18 @@ import { deleteTask } from "../Task/Functions/deleteTask";
 import { editTask } from "../Task/Functions/editTask";
 import { completedTask } from "../Task/Functions/completedTask";
 import { useSWRConfig } from "swr";
-import { useTaskStore } from "@/store";
+import { ITaskState, useTaskStore } from "@/store";
 import JSConfetti from "js-confetti";
-import { FullConfiguration } from "swr/_internal";
+import { IConfig } from "../../types/IConfig";
 
 export default function TaskList({ tasks }: Tasks): React.JSX.Element {
   const toast: CreateToastFnReturn = useToast();
-  const { mutate } = useSWRConfig();
-  const funMode: any = useTaskStore((state: any) => state.funMode);
-  const confetti: any = new JSConfetti();
-  const searchTerm: any = useTaskStore(
+  const { mutate }: IConfig = useSWRConfig();
+  const funMode: boolean = useTaskStore(
+    (state: React.ComponentState) => state.funMode
+  );
+  const confetti: JSConfetti = new JSConfetti();
+  const searchTerm: string = useTaskStore(
     (state: React.ComponentState) => state.searchTerm
   );
 

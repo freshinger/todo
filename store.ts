@@ -1,6 +1,25 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
+export interface ITaskState {
+  funMode: boolean;
+  setupMode: boolean;
+  finishSetup: () => void;
+  activeList: string | null;
+  setActiveList: (newActiveTask: string) => void;
+  searchTerm: string;
+  setSearchTerm: (newSearchTerm: string) => void;
+  toggleFunMode: () => void;
+  countingTasks: Task[];
+  setCountingTasks: (newCountingTasks: Task[]) => void;
+  countCompletedTasks: number;
+  countActiveTasks: number;
+  setCountCompletedTasks: (countingTasks: Task[]) => void;
+  setActiveTasks: (countingTasks: Task[]) => void;
+}
+
+//Todo: use interface? using it throws "Unable to update item 'task-tango-storage', the given storage is currently unavailable."
+
 export const useTaskStore = create(
   persist(
     (set) => ({
