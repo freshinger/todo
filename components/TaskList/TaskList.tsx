@@ -18,7 +18,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { deleteTask } from "../Task/Functions/deleteTask";
 import { editTask } from "../Task/Functions/editTask";
 import { completedTask } from "../Task/Functions/completedTask";
-import { useSWRConfig } from "swr";
+import { MutatorCallback, useSWRConfig } from "swr";
 import { ITaskState, useTaskStore } from "@/store";
 import JSConfetti from "js-confetti";
 import { IConfig } from "../../types/IConfig";
@@ -38,7 +38,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  async function handleDeleteTask(taskId: number): Promise<any> {
+  async function handleDeleteTask(taskId: number): Promise<void> {
     try {
       await deleteTask(taskId);
       mutate("/api/tasks");
@@ -63,7 +63,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
   async function handleEditTask(
     taskId: number,
     nextValue: string
-  ): Promise<any> {
+  ): Promise<void> {
     try {
       mutate(
         "/api/tasks",
@@ -85,7 +85,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     }
   }
 
-  async function handleCompletedTask(taskId: number): Promise<any> {
+  async function handleCompletedTask(taskId: number): Promise<void> {
     try {
       const task: Task = await completedTask(taskId);
       if (task.completed) {

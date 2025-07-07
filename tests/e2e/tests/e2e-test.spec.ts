@@ -9,19 +9,21 @@ test.describe("New Todo", () => {
     page,
   }: any) => {
     // Wait for the new task input to appear
-    const newTaskInput = await page.waitForSelector(
+    const newTaskInput: any = await page.waitForSelector(
       'input[placeholder="Add new task"]'
     );
     // Create 1st todo.
-    const todoText = randomItem();
+    const todoText: string = randomItem();
     await newTaskInput.fill(todoText);
     await newTaskInput.press("Enter");
 
     //find task in the tasklist
-    const ListItem = page.getByRole("listitem").filter({ hasText: todoText });
+    const ListItem: any = page
+      .getByRole("listitem")
+      .filter({ hasText: todoText });
 
     //mark item as done and assert it's checked
-    const itemCheckbox = ListItem.locator(".chakra-checkbox__control");
+    const itemCheckbox: any = ListItem.locator(".chakra-checkbox__control");
 
     //mark the latest as done even if there are multiple ones
     await itemCheckbox.first().click();
@@ -35,21 +37,23 @@ test.describe("New Todo", () => {
     page,
   }: any) => {
     // Wait for the new task input to appear
-    const newTaskInput = await page.waitForSelector(
+    const newTaskInput: any = await page.waitForSelector(
       'input[placeholder="Add new task"]'
     );
     // Create 2st todo.
-    const todoText2 = randomItem();
+    const todoText2: string = randomItem();
     await newTaskInput.fill(todoText2);
     await newTaskInput.press("Enter");
 
     //find task in the tasklist
-    const ListItem2 = page.getByRole("listitem").filter({ hasText: todoText2 });
+    const ListItem2: any = page
+      .getByRole("listitem")
+      .filter({ hasText: todoText2 });
 
     await ListItem2.waitFor();
 
     //delete a task and assert it's deleted
-    const itemDeleteBtn = ListItem2.locator(
+    const itemDeleteBtn: any = ListItem2.locator(
       'button[aria-label="Delete a task"]'
     );
 

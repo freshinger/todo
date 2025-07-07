@@ -25,20 +25,22 @@ export const useTaskStore = create<ITaskState>()(
       setupMode: true,
       finishSetup: () => set({ setupMode: false }),
       activeList: null,
-      setActiveList: (newActiveList: any) => set({ activeList: newActiveList }),
+      setActiveList: (newActiveList: string) =>
+        set({ activeList: newActiveList }),
       searchTerm: "",
-      setSearchTerm: (newSearchTerm: any) => set({ searchTerm: newSearchTerm }),
+      setSearchTerm: (newSearchTerm: string) =>
+        set({ searchTerm: newSearchTerm }),
       toggleFunMode: () =>
         set((state: React.ComponentState) => ({
           funMode: !state.funMode,
         })),
       countingTasks: [],
-      setCountingTasks: (newCountingTasks: any) =>
+      setCountingTasks: (newCountingTasks: Task[]) =>
         set({ countingTasks: newCountingTasks }),
       countCompletedTasks: 0,
       countActiveTasks: 0,
 
-      setCountCompletedTasks: (countingTasks: any) => {
+      setCountCompletedTasks: (countingTasks: Task[]) => {
         const count = countingTasks.reduce(
           (count: number, task: Task) => (task.completed ? count + 1 : count),
           0
@@ -46,7 +48,7 @@ export const useTaskStore = create<ITaskState>()(
         set({ countCompletedTasks: count });
       },
 
-      setActiveTasks: (countingTasks: any) => {
+      setActiveTasks: (countingTasks: Task[]) => {
         const countCompleted = countingTasks.reduce(
           (count: number, task: Task) => (task.completed ? count + 1 : count),
           0
