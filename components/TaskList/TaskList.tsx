@@ -38,7 +38,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  async function handleDeleteTask(taskId: number): Promise<void> {
+  async function handleDeleteTask(taskId: string): Promise<void> {
     try {
       await deleteTask(taskId);
       mutate("/api/tasks");
@@ -61,7 +61,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     }
   }
   async function handleEditTask(
-    taskId: number,
+    taskId: string,
     nextValue: string
   ): Promise<void> {
     try {
@@ -87,7 +87,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     }
   }
 
-  async function handleCompletedTask(taskId: number): Promise<void> {
+  async function handleCompletedTask(taskId: string): Promise<void> {
     try {
       const task: Task = await completedTask(taskId);
       if (task.completed) {

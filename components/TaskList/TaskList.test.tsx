@@ -3,15 +3,35 @@ import {
   render,
   screen,
   fireEvent,
-  waitFor,
   RenderResult,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 const tasks: Task[] = [
-  { _id: 1, title: "Task 1", completed: false },
-  { _id: 2, title: "Task 2", completed: false },
-  { _id: 3, title: "Task 3", completed: false },
+  {
+    _id: "1",
+    title: "Task 1",
+    completed: false,
+    __v: 0,
+    created_at: "",
+    updated_at: "",
+  },
+  {
+    _id: "2",
+    title: "Task 2",
+    completed: false,
+    __v: 0,
+    created_at: "",
+    updated_at: "",
+  },
+  {
+    _id: "3",
+    title: "Task 3",
+    completed: false,
+    __v: 0,
+    created_at: "",
+    updated_at: "",
+  },
 ];
 
 jest.mock("../Task/functions/completedTask");

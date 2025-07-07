@@ -3,13 +3,14 @@ import { ChakraProvider, theme } from "@chakra-ui/react";
 import { fonts } from "../lib/fonts";
 import { SWRConfig } from "swr";
 import React from "react";
+import type { AppProps } from "next/app";
 
 const fetcher = (url: string) => fetch(url).then((response) => response.json());
 
 export default function App({
   Component,
   pageProps,
-}: AppComponent): React.JSX.Element {
+}: AppProps): React.JSX.Element {
   return (
     <>
       <style jsx global>

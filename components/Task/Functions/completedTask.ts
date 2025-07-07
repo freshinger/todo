@@ -1,4 +1,4 @@
-export async function completedTask(taskId: number): Promise<Task> {
+export async function completedTask(taskId: string): Promise<Task> {
   return await fetch(`/api/tasks/${taskId}`, {
     method: "PATCH",
     headers: {
