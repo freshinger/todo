@@ -1,3 +1,4 @@
+import { useTaskStore } from "@/store";
 import {
   ColorModeContextType,
   FormControl,
@@ -8,7 +9,14 @@ import {
 
 export default function DarkMode(): JSX.Element {
   const { toggleColorMode }: ColorModeContextType = useColorMode();
+  const [darkMode, toggleDarkMode] = useTaskStore(
+    (state: React.ComponentState) => [state.darkMode, state.toggleDarkMode]
+  );
 
+  function toggle() {
+    toggleColorMode();
+    toggleDarkMode();
+  }
   return (
     <FormControl
       display="flex"
@@ -18,7 +26,12 @@ export default function DarkMode(): JSX.Element {
       <FormLabel htmlFor="dark-mode" mb="0">
         Dark Mode
       </FormLabel>
-      <Switch colorScheme="teal" id="dark-mode" onChange={toggleColorMode} />
+      <Switch
+        colorScheme="teal"
+        id="dark-mode"
+        isChecked={darkMode}
+        onChange={toggle}
+      />
     </FormControl>
   );
 }

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 export interface ITaskState {
+  darkMode: boolean;
   funMode: boolean;
   setupMode: boolean;
   finishSetup: () => void;
@@ -10,6 +11,7 @@ export interface ITaskState {
   searchTerm: string;
   setSearchTerm: (newSearchTerm: string) => void;
   toggleFunMode: () => void;
+  toggleDarkMode: () => void;
   countingTasks: Task[];
   setCountingTasks: (newCountingTasks: Task[]) => void;
   countCompletedTasks: number;
@@ -21,6 +23,7 @@ export interface ITaskState {
 export const useTaskStore = create<ITaskState>()(
   persist(
     (set) => ({
+      darkMode: false,
       funMode: false,
       setupMode: true,
       finishSetup: () => set({ setupMode: false }),
@@ -33,6 +36,10 @@ export const useTaskStore = create<ITaskState>()(
       toggleFunMode: () =>
         set((state: React.ComponentState) => ({
           funMode: !state.funMode,
+        })),
+      toggleDarkMode: () =>
+        set((state: React.ComponentState) => ({
+          darkMode: !state.darkMode,
         })),
       countingTasks: [],
       setCountingTasks: (newCountingTasks: Task[]) =>
