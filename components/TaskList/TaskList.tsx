@@ -67,7 +67,8 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
     try {
       mutate(
         "/api/tasks",
-        (data: any) => {
+        (data: Task[] | undefined): Task[] => {
+          if (!data) return [];
           return data.map((task: Task) => {
             if (task._id === taskId) {
               return { ...task, title: nextValue };
@@ -81,6 +82,7 @@ export default function TaskList({ tasks }: Tasks): React.JSX.Element {
 
       mutate("/api/tasks");
     } catch (error) {
+      console.warn(error);
       mutate("/api/tasks");
     }
   }

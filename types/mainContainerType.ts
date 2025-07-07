@@ -1,4 +1,4 @@
 type MainContainerType = {
   mainTitle: string;
-  children: any;
+  children: React.ReactNode;
 };

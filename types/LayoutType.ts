@@ -1,4 +1,4 @@
 type LayoutType = {
-  children: any;
+  children: React.ReactNode;
   title: string;
 };

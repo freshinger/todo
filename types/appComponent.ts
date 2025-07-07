@@ -1,4 +1,4 @@
 type AppComponent = {
-  Component: React.ComponentType;
+  Component: any;
   pageProps: React.ReactPropTypes;
 };
