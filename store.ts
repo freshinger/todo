@@ -18,9 +18,7 @@ export interface ITaskState {
   setActiveTasks: (countingTasks: Task[]) => void;
 }
 
-//Todo: use interface? using it throws "Unable to update item 'task-tango-storage', the given storage is currently unavailable."
-
-export const useTaskStore = create(
+export const useTaskStore = create<ITaskState>()(
   persist(
     (set) => ({
       funMode: false,
