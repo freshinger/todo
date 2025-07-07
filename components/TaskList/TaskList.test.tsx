@@ -6,6 +6,7 @@ import {
   RenderResult,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import { Task } from "@/types/task";
 
 const tasks: Task[] = [
   {

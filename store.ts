@@ -1,24 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-
-export interface ITaskState {
-  darkMode: boolean;
-  funMode: boolean;
-  setupMode: boolean;
-  finishSetup: () => void;
-  activeList: string | null;
-  setActiveList: (newActiveTask: string) => void;
-  searchTerm: string;
-  setSearchTerm: (newSearchTerm: string) => void;
-  toggleFunMode: () => void;
-  toggleDarkMode: () => void;
-  countingTasks: Task[];
-  setCountingTasks: (newCountingTasks: Task[]) => void;
-  countCompletedTasks: number;
-  countActiveTasks: number;
-  setCountCompletedTasks: (countingTasks: Task[]) => void;
-  setActiveTasks: (countingTasks: Task[]) => void;
-}
+import { ITaskState, Task } from "./types/task";
 
 export const useTaskStore = create<ITaskState>()(
   persist(
